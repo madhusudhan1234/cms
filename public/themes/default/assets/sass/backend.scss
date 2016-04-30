@@ -1,0 +1,13 @@
+	@import "bootstrap";
+
+	.verticle-center{
+		display: flex;
+		min-height: 100vh;
+		align-items: center;
+		justify-content: center;
+	}
+
+	body{
+		margin:0;
+		padding:0;
+	}
