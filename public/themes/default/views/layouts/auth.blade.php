@@ -25,6 +25,13 @@
                                 </ul>
                             </div>
                         @endif
+
+                        @if($status)
+                            <div class="alert alert-info">
+                                {{ $status }}
+                            </div>
+                        @endif
+
                         @yield('content')
                     </div>
                 </div>

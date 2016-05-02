@@ -2,8 +2,10 @@
 
 namespace cms\Providers;
 
+use cms\View\Composers;
 use cms\View\ThemeViewFinder;
 use Illuminate\Support\ServiceProvider;
+use Monolog\Handler\LogEntriesHandler;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app['view']->composer(['layouts.auth','layouts.backend'],Composers\AddStatusMessage::class);
+        $this->app['view']->composer('layouts.backend',Composers\AddAdminUser::class);
         $this->app['view']->setFinder($this->app['theme.finder']);
     }
 
@@ -31,5 +35,10 @@ class AppServiceProvider extends ServiceProvider
             $finder->setActiveTheme($config['active']);
             return $finder;
         });
+
+        $logEntriesHandler = newLogEntriesHandler(env('LOGENTRIES_TOKEN'));
+
+        $log = $this->app['log']->getMonolog();
+        $log->pushHandler($logEntriesHandler);
     }
 }

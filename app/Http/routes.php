@@ -11,6 +11,9 @@ Route::controller('auth','Auth\AuthController',[
     'getLogout' => 'auth.logout'
 ]);
 
+Route::get('backend/users/{users}/confirm',['as'=>'backend.users.confirm','uses'=>'Backend\UsersController@confirm']);
+Route::resource('backend/users','Backend\UsersController');
+
 Route::get('backend/dashboard',['as' => 'backend.dashboard','uses' => 'Backend\DashboardController@index']);
 
 Route::get('/', function () {

@@ -10,12 +10,10 @@
 	<div class="container">
 		<div class="navbar-header"><a href="" class="navbar-brand">The CMS</a></div>
 		<ul class="nav navbar-nav">
-			<li><a href="">Item1</a></li>
-			<li><a href="#">Item2</a></li>
-			<li><a href="#">Item3</a></li>
+			<li><a href="{{ route('backend.users.index') }}">Users</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><span class="navbar-text">Hello Bro</span></li>
+			<li><span class="navbar-text">Hello, {{ $admin->name }}</span></li>
 			<li><a href="{{ route('auth.logout') }}">Logout</a></li>
 		</ul>
 	</div>
@@ -24,6 +22,23 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3>@yield('title')</h3>
+			@if($errors->any())
+				<div class="alert alert-danger">
+					<strong>We found Some errors !</strong>
+					<ul>
+						@foreach($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
+
+			@if($status)
+				<div class="alert alert-info">
+					{{ $status }}
+				</div>
+			@endif
+
 			@yield('content')
 		</div>
 	</div>

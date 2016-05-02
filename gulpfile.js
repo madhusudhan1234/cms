@@ -17,5 +17,6 @@ var elixir = require('laravel-elixir');
  ];
 
 elixir(function(mix) {
+    mix.copy('node_modules/bootstrap-sass/assets/fonts',elixir.config.publicPath+'/fonts');
     mix.sass('backend.scss');
 });

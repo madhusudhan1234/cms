@@ -4,9 +4,9 @@ namespace cms\View\Composers;
 
 use Illuminate\View\View;
 
-class AddStatusMessage{
+class AddAdminUser{
     public function compose(View $view)
     {
-        $view->with('status',session('status'));
+        $view->with('admin',auth()->user());
     }
 }
