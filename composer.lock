@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "80633288cb0c3dba141aa48e286953b4",
-    "content-hash": "94123e1be259fb06e07b869fb15855d3",
+    "hash": "d20df3294cdf3a3bf5e3b38a724d6f2f",
+    "content-hash": "5a4dfe97f62c4229645dd7630c652449",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -571,6 +571,55 @@
                 "storage"
             ],
             "time": "2016-04-28 06:53:12"
+        },
+        {
+            "name": "lewis/presenter",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jasonlewis/presenter.git",
+                "reference": "d157bb7c52ffce7f0f2e45a5ceaae639cd509ee2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jasonlewis/presenter/zipball/d157bb7c52ffce7f0f2e45a5ceaae639cd509ee2",
+                "reference": "d157bb7c52ffce7f0f2e45a5ceaae639cd509ee2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.*|5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "illuminate/pagination": "5.1.*|5.2.*",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lewis\\Presenter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jason Lewis",
+                    "email": "jason.lewis1991@gmail.com"
+                }
+            ],
+            "description": "Simple view presenter library for Laravel.",
+            "keywords": [
+                "decorator",
+                "laravel",
+                "presenter",
+                "view"
+            ],
+            "time": "2016-02-19 05:23:45"
         },
         {
             "name": "logentries/logentries-monolog-handler",
