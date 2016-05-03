@@ -35,10 +35,10 @@ class AppServiceProvider extends ServiceProvider
             $finder->setActiveTheme($config['active']);
             return $finder;
         });
-
+/*
         $logEntriesHandler = newLogEntriesHandler(env('LOGENTRIES_TOKEN'));
 
         $log = $this->app['log']->getMonolog();
-        $log->pushHandler($logEntriesHandler);
+        $log->pushHandler($logEntriesHandler);*/
     }
 }
