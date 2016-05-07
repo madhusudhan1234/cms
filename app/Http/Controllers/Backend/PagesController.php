@@ -39,9 +39,9 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Page $page)
     {
-        //
+        return view('backend.pages.form',compact('page'));
     }
 
     /**
@@ -50,9 +50,11 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\StorePageRequest $request)
     {
-        //
+        $this->pages->create($request->only('title','uri','name','content'));
+
+        return redirect(route('backend.pages.index'))->with('status','Page has been created');
     }
 
     /**
@@ -74,7 +76,9 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = $this->pages->findOrFail($id);
+
+        return view('backend.pages.form',compact('page'));
     }
 
     /**
@@ -84,14 +88,20 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\UpdatePageRequest $request, $id)
     {
-        //
+        $page = $this->pages->findOrFail($id);
+
+        $page->fill($request->only('title','uri','name','content'))->save();
+
+        return redirect(route('backend.pages.edit',$page->id))->with('status','Your page has been updated');
     }
 
     public function confirm($id)
     {
-        //
+        $page = $this->pages->findOrFail($id);
+
+        return view('backend.pages.confirm',compact('page'));
     }
     /**
      * Remove the specified resource from storage.
@@ -101,6 +111,10 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $page = $this->pages->findOrFail($id);
+
+        $page->delete();
+
+        return redirect(route('backend.pages.index'))->with('status','User has been deleted');
     }
 }

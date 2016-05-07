@@ -6,7 +6,7 @@ use Lewis\Presenter\AbstractPresenter;
 
     class PagePresenter extends AbstractPresenter
     {
-        public function prettyuri()
+        public function prettyUri()
         {
             return '/'.ltrim($this->uri,'/');
         }

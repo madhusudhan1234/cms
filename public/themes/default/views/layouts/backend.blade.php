@@ -4,6 +4,7 @@
 	<title>Cms System</title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="{{ theme('css/backend.css') }}">
+	<script src="{{ theme('js/simplemde.js') }}"></script>
 </head>
 <body>
 <nav class="navbar-static-top navbar-inverse">
