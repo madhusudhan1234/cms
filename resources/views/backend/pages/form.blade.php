@@ -16,6 +16,14 @@
         {!! Form::label('uri','URI') !!}
         {!! Form::text('uri',null,['class'=>'form-control']) !!}
     </div>
+    <div class="form-group row">
+        <div class="col-lg-4">
+            {!! Form::select('template',$templates,null,['class'=>'form-control']) !!}
+        </div>
+        <div class="col-lg-8">
+            {!! Form::label('template') !!}
+        </div>
+    </div>
     <div class="form-group">
         {!! Form::label('name') !!}
         {!! Form::text('name',null,['class'=>'form-control']) !!}

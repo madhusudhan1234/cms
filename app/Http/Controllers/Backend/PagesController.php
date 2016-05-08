@@ -31,7 +31,7 @@ class PagesController extends Controller
     public function index()
     {
         $pages = $this->pages->all();
-        return view('backend.pages.index',compact('pages'));
+        return view('backend.pages.index', compact('pages'));
     }
 
     /**
@@ -41,26 +41,27 @@ class PagesController extends Controller
      */
     public function create(Page $page)
     {
-        return view('backend.pages.form',compact('page'));
+        $templates = $this->getPageTemplates();
+        return view('backend.pages.form', compact('page', 'templates'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Requests\StorePageRequest $request)
     {
-        $this->pages->create($request->only('title','uri','name','content'));
+        $this->pages->create($request->only('title', 'uri', 'name', 'content', 'template'));
 
-        return redirect(route('backend.pages.index'))->with('status','Page has been created');
+        return redirect(route('backend.pages.index'))->with('status', 'Page has been created');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -71,42 +72,44 @@ class PagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $page = $this->pages->findOrFail($id);
+        $templates = $this->getPageTemplates();
 
-        return view('backend.pages.form',compact('page'));
+        return view('backend.pages.form', compact('page', 'templates'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Requests\UpdatePageRequest $request, $id)
     {
         $page = $this->pages->findOrFail($id);
 
-        $page->fill($request->only('title','uri','name','content'))->save();
+        $page->fill($request->only('title', 'uri', 'name', 'content', 'template'))->save();
 
-        return redirect(route('backend.pages.edit',$page->id))->with('status','Your page has been updated');
+        return redirect(route('backend.pages.edit', $page->id))->with('status', 'Your page has been updated');
     }
 
     public function confirm($id)
     {
         $page = $this->pages->findOrFail($id);
 
-        return view('backend.pages.confirm',compact('page'));
+        return view('backend.pages.confirm', compact('page'));
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -115,6 +118,13 @@ class PagesController extends Controller
 
         $page->delete();
 
-        return redirect(route('backend.pages.index'))->with('status','User has been deleted');
+        return redirect(route('backend.pages.index'))->with('status', 'User has been deleted');
     }
-}
+
+    protected function getPageTemplates()
+    {
+        $templates = config('cms.templates');
+
+        return ['' => ''] + array_combine(array_keys($templates), array_keys($templates));
+    }
+} 
