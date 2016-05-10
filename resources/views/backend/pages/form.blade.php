@@ -25,6 +25,26 @@
         </p>
     </div>
     <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12">
+                {!! Form::label('Order') !!}
+            </div>
+            <div class="col-lg-2">
+                {!! Form::select('order',[
+                    '' => '',
+                    'before' => 'Before',
+                    'after' => 'After',
+                    'childof' => 'ChildOf'
+                ],null,['class'=>'form-control']) !!}
+            </div>
+            <div class="col-lg-5">
+                {!! Form::select('orderPage',[
+                    '' => ''
+                ] + $orderPages->lists('padded_title','id')->toArray(),null,['class'=>'form-control']) !!}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
         {!! Form::label('content') !!}
         {!! Form::textarea('content',null,['class'=>'form-control']) !!}
     </div>
