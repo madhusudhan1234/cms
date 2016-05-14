@@ -26,7 +26,7 @@ class StorePageRequest extends Request
         return [
             'title'=>['required'],
             'uri' => ['required','unique:pages'],
-            'name' => ['required','unique:pages'],
+            'name' => ['unique:pages'],
             'content'=>['required']
         ];
     }
