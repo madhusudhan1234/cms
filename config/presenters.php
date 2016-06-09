@@ -14,5 +14,6 @@ return [
     |
     */
     cms\Page::class => cms\Presenters\PagePresenter::class,
+    cms\Post::class => cms\Presenters\PostPresenter::class,
 
 ];

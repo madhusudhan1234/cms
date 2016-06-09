@@ -1,9 +1,2 @@
-@extends('layouts.backend')
-
-@section('title','Welcome')
-
-
-@section('content')
-    Hello World
-    <a href="{{ URL::to('auth/login') }}">Login</a>
-@endsection
+<h1>Hello This is the Front end of CMS
+</h1>

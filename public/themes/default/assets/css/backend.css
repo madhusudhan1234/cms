@@ -7932,4 +7932,8 @@ body {
   margin: 0;
   padding: 0; }
 
+.excerpt, .codeMirror {
+  height: 150px;
+  min-height: 150px; }
+
 /*# sourceMappingURL=backend.css.map */

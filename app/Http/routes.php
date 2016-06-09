@@ -6,6 +6,10 @@ Route::controller('auth/password','Auth\PasswordController',[
     'getReset' => 'auth.password.reset'
 ]);
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::controller('auth','Auth\AuthController',[
    'getLogin' => 'auth.login', 
     'getLogout' => 'auth.logout'
@@ -17,8 +21,8 @@ Route::resource('backend/users','Backend\UsersController');
 Route::get('backend/pages/{pages}/confirm',['as'=>'backend.pages.confirm','uses'=>'Backend\PagesController@confirm']);
 Route::resource('backend/pages','Backend\PagesController');
 
+Route::get('backend/posts/{posts}/confirm',['as'=>'backend.posts.confirm','uses' => 'Backend\PostsController@confirm']);
+Route::resource('backend/posts','Backend\PostsController');
+
 Route::get('backend/dashboard',['as' => 'backend.dashboard','uses' => 'Backend\DashboardController@index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});

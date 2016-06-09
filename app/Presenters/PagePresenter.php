@@ -22,7 +22,7 @@ use Lewis\Presenter\AbstractPresenter;
          */
         public function linkToPaddedTitle($link)
         {
-            $padding = str_repeat('&nbsp',$this->depth * 4);
+            $padding = str_repeat('&nbsp;',$this->depth * 4);
 
             return $padding.link_to($link,$this->title); 
         }
@@ -34,6 +34,6 @@ use Lewis\Presenter\AbstractPresenter;
          */
         public function paddedTitle()
         {
-            return str_repeat('&nbsp',$this->depth * 4).$this->title;
+            return str_repeat('&nbsp;',$this->depth * 4).$this->title;
         }
     }

@@ -43,10 +43,9 @@ class PagesController extends Controller
     public function create(Page $page)
     {
         $templates = $this->getPageTemplates();
-        return view('backend.pages.form', compact('page', 'templates'));
         $orderPages = $this->pages->all();
 
-        return view('backend.pages.form',compact('page','orderPages'));
+        return view('backend.pages.form',compact('page','orderPages','templates'));
     }
 
     /**
@@ -87,10 +86,8 @@ class PagesController extends Controller
         $page = $this->pages->findOrFail($id);
         $templates = $this->getPageTemplates();
 
-        return view('backend.pages.form', compact('page', 'templates'));
         $orderPages = $this->pages->all();
-
-        return view('backend.pages.form',compact('page','orderPages'));
+        return view('backend.pages.form', compact('page', 'templates','orderPages'));
 
     }
 

@@ -4,7 +4,7 @@
 	<title>Cms System</title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="{{ theme('css/backend.css') }}">
-	<script src="{{ theme('js/simplemde.js') }}"></script>
+	<script src="{{ theme('js/all.js') }}"></script>
 </head>
 <body>
 <nav class="navbar-static-top navbar-inverse">
@@ -13,6 +13,7 @@
 		<ul class="nav navbar-nav">
 			<li><a href="{{ route('backend.users.index') }}">Users</a></li>
 			<li><a href="{{ route('backend.pages.index') }}">Pages</a></li>
+			<li><a href="{{ route('backend.posts.index') }}">Blog Posts</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><span class="navbar-text">Hello, {{ $admin->name }}</span></li>
