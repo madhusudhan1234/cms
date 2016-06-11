@@ -16,6 +16,10 @@ class User extends Authenticatable
     ];
 
     /**
+     * @var array
+     */
+    protected $dates = ['last_login_at'];
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
