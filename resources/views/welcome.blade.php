@@ -1,2 +1,7 @@
-<h1>Hello This is the Front end of CMS
-</h1>
+@extends('layouts.frontend')
+
+@section('title','Home')
+
+@section('content')
+    <h1>Hello</h1>
+@endsection
